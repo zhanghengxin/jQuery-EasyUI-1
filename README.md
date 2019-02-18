@@ -1,6 +1,8 @@
 # jQuery-EasyUI
-jQuery EasyUI 1.3.5源码。仅供学习使用。
-
--------------
-
-src文件夹，jQeury EasyUI 全部源代码。
+```JS
+/**
+ * from https://github.com/dongtianee/jQuery-EasyUI/tree/master/src
+ * version 1.3.5
+ * remake HKK
+ **/
+```
