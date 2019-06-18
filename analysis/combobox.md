@@ -76,7 +76,7 @@ jQuery.data(element, key, value)
 
 jQuery.data(element, key)
 
-五、组件调用
+# 五、组件调用
 5.1 调用暴露函数
 combobox 有两个参数
 
