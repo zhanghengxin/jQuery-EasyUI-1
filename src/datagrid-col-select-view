@@ -1,0 +1,62 @@
+/**
+ * --------------------------------------------------------------------------- *
+ *
+ * @FileName: col-select-view
+ * @Dependence: easy-ui/datagrid
+ * @Description: 表头选择显示
+ *
+ * --------------------------------------------------------------------------- *
+ */
+;(function ($) {
+    var headerContextMenu,selectedCls = 'menu-icon-selected';
+
+    function initContextMenu($target) {
+        if (headerContextMenu) {
+            return;
+        }
+        headerContextMenu = $("<div/>").appendTo('body');
+        headerContextMenu.menu({
+            onClick: function (menuItem) {
+                if (menuItem.iconCls === selectedCls) {
+                    $target.datagrid('hideColumn', menuItem.name);
+                    headerContextMenu.menu('setIcon', {
+                        target: menuItem.target,
+                        iconCls: 'menu-icon-unselected'
+                    })
+                } else {
+                    $target.datagrid('showColumn', menuItem.name);
+                    headerContextMenu.menu('setIcon',{
+                        target: menuItem.target,
+                        iconCls: selectedCls
+                    })
+                }
+            }
+        });
+
+        var headerFields = $target.datagrid('getColumnFields');
+        var tempField, tempCol;
+        //第一列，不隐藏
+        for (var i = 1, len = headerFields.length; i < len; i++) {
+            tempField = headerFields[i];
+            tempCol = $target.datagrid('getColumnOption', tempField);
+            headerContextMenu.menu('appendItem', {
+                text: tempCol.title,
+                name: tempField,
+                iconCls: selectedCls
+            })
+        }
+    }
+
+    $.extend($.fn.datagrid.defaults, {
+        onHeaderContextMenu: function (evt, params) {
+            evt.preventDefault();
+            var $datagrid = $(this);
+            initContextMenu($datagrid);
+            headerContextMenu.menu('show',{
+                left:evt.pageX,
+                top:evt.pageY
+            })
+        }
+    })
+})(jQuery);
+
