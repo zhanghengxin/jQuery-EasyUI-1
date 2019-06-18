@@ -6,3 +6,11 @@
  * remake HKK
  **/
 ```
+
+# 引入扩展功能
+
+## datagrid 扩展
+### 表头选择显示
+src/datagrid-column-select-view
+### 表头拖动
+src/datagrid-column-move
