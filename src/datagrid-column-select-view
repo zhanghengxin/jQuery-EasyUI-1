@@ -1,7 +1,7 @@
 /**
  * --------------------------------------------------------------------------- *
  *
- * @FileName: col-select-view
+ * @FileName: datagrid-column-select-view
  * @Dependence: easy-ui/datagrid
  * @Description: 表头选择显示
  *
